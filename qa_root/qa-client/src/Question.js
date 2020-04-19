@@ -10,7 +10,7 @@ class Question extends Component {
     handleVote(event) {
 
         let answerId = event.currentTarget.dataset.id;
-        //console.log(answerId);
+        //console.log("answerid", answerId);
         this.props.handleVote(this.props.id, answerId);
 
     }

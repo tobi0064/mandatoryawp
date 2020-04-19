@@ -24,10 +24,10 @@ class PostAnswer extends Component {
     render() {
         return (
             <>
-
+<form>
                 <input name="input" onChange={event => this.onChange(event)} type="text"/>
                 <button onClick={_ => this.onSubmit()}>Post Answer</button>
-
+</form>
             </>
         )
     }

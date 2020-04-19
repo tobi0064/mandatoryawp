@@ -51,23 +51,34 @@ app.post('/api/questions', (req, res) => {
         answers: [{ text: String, votes: Number }],
     };
 
-// PostAnswer
-
     questions.push(question)
     res.json({msg: "question added", question: question})
 })
+// PostAnswer
 app.post('/api/questions/:id/answers', (req, res) => {
     let answer = {
         id: Math.random(),
         text: req.body.text,
         votes: 0
     }
-    const question = questions.find(req.params.id);
+    const question = questions.find(q => q.id ===parseFloat(req.params.id));
     question.answers.push(answer);
     console.log(answer);
     res.json({msg: "Answer added", question: question});
 });
 
+app.put('/api/questions/:id/answers/:id/votes'), (req, res) => {
+    let answer = {
+        id: req.params.id,
+        text: req.params.text,
+        votes: req.params.votes
+    }
+    const question = questions.find(q => q.id ===parseFloat(req.params.id));
+    question.answers.votes.push(answer.votes ++)
+
+
+
+}
 
 /**** Start! ****/
 app.listen(port, () => console.log(`${appName} API running on port ${port}!`));
