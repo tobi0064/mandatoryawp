@@ -13,6 +13,8 @@ class Question extends Component {
         //console.log("answerid", answerId);
         this.props.handleVote(this.props.id, answerId);
 
+
+
     }
     render() {
         const id = this.props.id;
@@ -24,12 +26,12 @@ class Question extends Component {
             content = question.question;
             if(question.answers){
                 answers = question.answers.map((answer,id) =>
-                    <div key={answer._id} id={answer._id}>
+                    <div key={answer.id} id={answer.id}>
                         <br />
                         <div>{answer.text}</div>
                         <div>Up votes: {answer.votes}</div>
 
-                        <button onClick={() => this.props.handleVote(this.props.id, answer._id)}>Vote up</button>
+                        <button onClick={() => this.props.handleVote(this.props.id, answer.id)}>Vote up</button>
 
                     </div>
 

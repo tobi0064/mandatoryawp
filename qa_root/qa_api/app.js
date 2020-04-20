@@ -67,18 +67,19 @@ app.post('/api/questions/:id/answers', (req, res) => {
     res.json({msg: "Answer added", question: question});
 });
 
-app.put('/api/questions/:id/answers/:id/votes'), (req, res) => {
+app.put('/api/questions/:id/answers/:aid/votes', (req, res) => {
     let answer = {
-        id: req.params.id,
+        aid: req.params.aid,
         text: req.params.text,
         votes: req.params.votes
     }
     const question = questions.find(q => q.id ===parseFloat(req.params.id));
-    question.answers.votes.push(answer.votes ++)
+    const ans = question.answers.find(a => a.id ===parseFloat(req.params.aid));
+    ans.votes++;
 
+    res.json({msg: "Answer upvoted", question: question});
 
-
-}
+});
 
 /**** Start! ****/
 app.listen(port, () => console.log(`${appName} API running on port ${port}!`));

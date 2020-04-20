@@ -29,11 +29,11 @@ class App extends Component {
         return question;
     }
     putVote(questionId, answerId) {
-        const url = `http://localhost:8080/api/questions`
+        const url = `http://localhost:8080/api/questions/`
             .concat(questionId)
             .concat("/answers/")
             .concat(answerId)
-            .concat("/vote");
+            .concat("/votes");
         fetch(url, {
             method: "PUT",
             headers: {
@@ -42,7 +42,7 @@ class App extends Component {
         })
             .then(response => response.json())
             .then(json => {
-                console.log("Result of posting a new question:");
+                console.log("result of upvoting");
                 console.log(json);
                 this.getData();
             });
